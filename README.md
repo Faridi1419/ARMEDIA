@@ -24,3 +24,26 @@ A modern web-based dashboard for monitoring Quectel EC200U cellular modules with
 - Connection status monitoring
 
 ## 📁 Project Structure
+
+🎨 Dashboard Features
+Signal Monitoring: Real-time RSSI and BER display
+
+Visual Indicators: Color-coded signal bars
+
+Module Info: Display manufacturer and revision
+
+SIM Status: Check SIM card readiness
+
+Auto-refresh: Continuous monitoring every 2 seconds
+
+Responsive Design: Works on mobile and desktop
+
+👥 Contributors
+Backend Development: Amir Radnia - Python serial communication and AT command implementation
+
+Frontend & Dashboard: Reza Faridi - Web interface design and API integration
+
+Project Integration: Both - System architecture and deployment
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
