@@ -10,25 +10,30 @@
 <body>
     <div class="dashboard">
         <!-- Header -->
-<header class="header">
-    <div class="header-content">
-        <div class="header-left">
-            <h1><i class="fas fa-satellite-dish"></i> EC200U Cellular Monitor</h1>
-        </div>
-        <div class="header-right">
-            <div class="logo">
-                <span class="logo-by">by</span>
-                <span class="logo-armed">
-                    <span class="logo-arm">ARM</span><span class="logo-media">EDIA</span>
-                </span>
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1><i class="fas fa-satellite-dish"></i> EC200U Cellular Monitor</h1>
+                    <div class="mode-toggle">
+                        <button id="modeToggle" class="btn-text">
+                            <i class="fas fa-sliders-h"></i> Advanced Mode
+                        </button>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="logo">
+                        <span class="logo-by">by</span>
+                        <span class="logo-armed">
+                            <span class="logo-arm">ARM</span><span class="logo-media">EDIA</span>
+                        </span>
+                    </div>
+                    <div class="connection-status" id="connectionStatus">
+                        <span class="status-dot"></span>
+                        <span>Disconnected</span>
+                    </div>
+                </div>
             </div>
-            <div class="connection-status" id="connectionStatus">
-                <span class="status-dot"></span>
-                <span>Disconnected</span>
-            </div>
-        </div>
-    </div>
-</header>
+        </header>
 
         <!-- Main Content -->
         <main class="main-content">
@@ -93,28 +98,62 @@
                 </div>
             </div>
 
-            <!-- Controls Card -->
-            <div class="card controls-card">
+            <!-- Controls Card (Simple Mode) -->
+            <div class="card controls-card simple-controls">
                 <div class="card-header">
                     <h2><i class="fas fa-cogs"></i> Controls</h2>
+                    <div class="mode-badge">Simple</div>
                 </div>
                 <div class="card-body">
                     <div class="control-buttons">
                         <button id="connectBtn" class="btn btn-primary">
-                            <i class="fas fa-plug"></i> Connect
+                            <i class="fas fa-plug"></i> Connect to Backend
                         </button>
-                        <button id="refreshBtn" class="btn btn-secondary" disabled>
+                        <button id="refreshBtn" class="btn btn-secondary">
                             <i class="fas fa-sync"></i> Manual Refresh
-                        </button>
-                        <button id="scanBtn" class="btn btn-secondary">
-                            <i class="fas fa-search"></i> Scan Ports
                         </button>
                     </div>
                     <div class="auto-refresh">
                         <label>
                             <input type="checkbox" id="autoRefresh" checked>
-                            Auto-refresh every 2 seconds
+                            Auto-refresh every 2s
                         </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls Card (Advanced Mode - Hidden by default) -->
+            <div class="card controls-card advanced-controls" style="display: none;">
+                <div class="card-header">
+                    <h2><i class="fas fa-cogs"></i> Advanced Controls</h2>
+                    <div class="mode-badge">Advanced</div>
+                </div>
+                <div class="card-body">
+                    <div class="control-buttons">
+                        <button id="scanBtn" class="btn btn-secondary">
+                            <i class="fas fa-search"></i> Scan Ports
+                        </button>
+                        <button id="connectToggle" class="btn btn-primary">
+                            <i class="fas fa-plug"></i> Connect
+                        </button>
+                        <button id="resetBtn" class="btn btn-warning">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                    <div class="port-selection">
+                        <label for="portSelect">Select Port:</label>
+                        <select id="portSelect" class="port-select">
+                            <option value="">Auto-detect</option>
+                        </select>
+                    </div>
+                    <div class="command-input">
+                        <label for="customCommand">Custom AT Command:</label>
+                        <div class="command-group">
+                            <input type="text" id="customCommand" placeholder="AT+CSQ" value="AT+CSQ">
+                            <button id="sendCommand" class="btn btn-secondary">
+                                <i class="fas fa-paper-plane"></i> Send
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -122,14 +161,16 @@
             <!-- Log Card -->
             <div class="card log-card">
                 <div class="card-header">
-                    <h2><i class="fas fa-terminal"></i> Command Log</h2>
-                    <button id="clearLog" class="btn-text">Clear</button>
+                    <h2><i class="fas fa-terminal"></i> Status Log</h2>
+                    <button id="clearLog" class="btn-text">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
                 </div>
                 <div class="card-body">
                     <div class="log-container" id="logContainer">
                         <div class="log-entry info">
                             <span class="timestamp">[00:00:00]</span>
-                            <span>Dashboard initialized. Click Connect to start monitoring.</span>
+                            <span>System ready. Start backend server first or use Advanced Mode for direct connection.</span>
                         </div>
                     </div>
                 </div>
@@ -137,7 +178,7 @@
         </main>
     </div>
 
-    <!-- Connection Modal -->
+    <!-- Connection Modal (For Advanced Mode) -->
     <div id="connectionModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">

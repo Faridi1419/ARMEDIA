@@ -483,3 +483,69 @@ body {
         text-align: center;
     }
 }
+
+/* Mode Toggle */
+.mode-toggle {
+    margin-top: 8px;
+}
+
+.mode-toggle .btn-text {
+    font-size: 0.9rem;
+    color: var(--primary);
+}
+
+.mode-badge {
+    background: var(--primary);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Advanced Controls */
+.port-selection, .command-input {
+    margin-top: 16px;
+}
+
+.port-selection label, .command-input label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--gray-600);
+}
+
+.port-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--gray-300);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.command-group {
+    display: flex;
+    gap: 8px;
+}
+
+.command-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--gray-300);
+    border-radius: 8px;
+    font-family: monospace;
+}
+
+/* Mode Switching */
+.simple-controls, .advanced-controls {
+    transition: all 0.3s ease;
+}
+
+.btn-warning {
+    background: #f59e0b;
+    color: white;
+}
+
+.btn-warning:hover {
+    background: #d97706;
+}
